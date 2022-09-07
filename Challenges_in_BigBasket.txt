@@ -1,0 +1,12 @@
+1. When i was trying to findout xpath for a particular element, I could inspect the element
+but when i move mouse cursor from the webelement it changes the element code in Html page 
+
+Ans: I tried to inspect column containing webelements and derived the xpath of column and then navigated to particular webelement
+
+2. When i was trying to find xpath for non html tag web element, the tag doesn't work for the web element.
+
+Ans: By doing some research i got to know we can find xpath for a web element which has non-html tag with 
+
+	syntax--"//*[local-name()='non-html tag name' and @attribute = 'value']"
+
+
