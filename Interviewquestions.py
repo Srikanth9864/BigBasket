@@ -89,6 +89,7 @@
 
 # add the numbers with this output
 # o/p = [5, 7, 9]
+
 lst1 = [1,2,3]
 lst2 = [4,5,6]
 
@@ -197,12 +198,13 @@ lst2 = [4,5,6]
 # s1=filter(lambda num : num%2==0,evn)
 # print(list(s1))
 
-# from selenium import webdriver
-# from time import sleep
-# from selenium.webdriver import Chrome
-# from webdriver_manager.chrome import ChromeDriverManager
+from selenium import webdriver
+from time import sleep
+from selenium.webdriver import Chrome
+from webdriver_manager.chrome import ChromeDriverManager
+from re import findall
 
-
+# Sony Interview Question
 # driver = webdriver.Chrome(ChromeDriverManager().install())
 # driver.get("https://en.wikipedia.org/wiki/Sony")
 # founders_value = driver.find_element("xpath","(//a[text()='Masaru Ibuka'])[1]").text
@@ -218,3 +220,52 @@ lst2 = [4,5,6]
 # print("details are validated")
 # driver.close()
 
+# Sony Interview Question
+dd = {0: 0, 1: 2, 2: 4, 3: 6, 4: 8, 5: 10}
+# dd.popitem()
+# dd.pop(2)
+# print(dd)
+
+# Sony Interview Question
+# filter_ = [i for i in range(1,101) if i%3==0]
+# print(filter_)
+# Sony Interview Question
+# dd = {0: 0, 1: 2, 2: 4, 3: 6, 4: 8, 5: 10}
+# print(dd.values())
+
+# Sony Interview Question
+# ss = range(1,11)
+# dd_ = {index : (index*2) for index,item in enumerate(ss)}
+# print(dd_)
+
+# txt = "apple#banana#cherry#orange"
+# # output txt = ['apple','banana','cherry#orange']
+# txt = txt.replace("#",",",2)
+# print(txt.split(","))
+
+
+# # Prime Numbers 
+# end = int(input("Enter the range"))
+# for i in range(2,end):
+#     if i > 1:
+#         for j in range(2,i):
+#             if i % j == 0:
+#                 break
+#         else :
+#             print(i)
+
+driver = webdriver.Chrome(ChromeDriverManager().install())
+driver.get("https://www.amazon.in/")
+driver.maximize_window()
+driver.implicitly_wait(5)
+driver.find_element("xpath","//a[text()=' Electronics ']").click()
+driver.find_element("xpath","//span[text()='Wearable Technology']").click()
+driver.find_element("xpath","//span[text()='Smartwatches & Accessories']").click()
+# items = driver.find_elements("xpath","//div[@class='a-section octopus-pc-asin-title' ]|//div[@class='a-section octopus-pc-asin-title' ]/../..//span[@class='a-price-whole']")
+prices = driver.find_elements("xpath","//span[@class='a-price-whole']")
+prices_ = [item.text for item in prices ]
+print(prices_)
+# for price in prices_:
+# price = " ".join(prices_)
+# print(price)
+driver.close()
