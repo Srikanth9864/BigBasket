@@ -198,11 +198,16 @@ lst2 = [4,5,6]
 # s1=filter(lambda num : num%2==0,evn)
 # print(list(s1))
 
+
+from collections import defaultdict
 from selenium import webdriver
 from time import sleep
 from selenium.webdriver import Chrome
 from webdriver_manager.chrome import ChromeDriverManager
-from re import findall
+from re import findall, subn
+from selenium.webdriver.common.utils import Keys
+
+
 
 # Sony Interview Question
 # driver = webdriver.Chrome(ChromeDriverManager().install())
@@ -238,7 +243,7 @@ dd = {0: 0, 1: 2, 2: 4, 3: 6, 4: 8, 5: 10}
 # dd_ = {index : (index*2) for index,item in enumerate(ss)}
 # print(dd_)
 
-# txt = "apple#banana#cherry#orange"
+txt = "apple#banana#cherry#orange"
 # # output txt = ['apple','banana','cherry#orange']
 # txt = txt.replace("#",",",2)
 # print(txt.split(","))
@@ -256,17 +261,50 @@ dd = {0: 0, 1: 2, 2: 4, 3: 6, 4: 8, 5: 10}
 
 #Sony Interview Question
 driver = webdriver.Chrome(ChromeDriverManager().install())
-driver.get("https://www.amazon.in/")
-driver.maximize_window()
-driver.implicitly_wait(5)
-driver.find_element("xpath","//a[text()=' Electronics ']").click()
-driver.find_element("xpath","//span[text()='Wearable Technology']").click()
-driver.find_element("xpath","//span[text()='Smartwatches & Accessories']").click()
-# items = driver.find_elements("xpath","//div[@class='a-section octopus-pc-asin-title' ]|//div[@class='a-section octopus-pc-asin-title' ]/../..//span[@class='a-price-whole']")
-prices = driver.find_elements("xpath","//span[@class='a-price-whole']")
-prices_ = [item.text for item in prices ]
-print(prices_)
-# for price in prices_:
-# price = " ".join(prices_)
-# print(price)
+# driver.get("https://www.amazon.in/")
+# driver.maximize_window()
+# driver.implicitly_wait(5)
+# driver.find_element("xpath","//a[text()=' Electronics ']").click()
+# driver.find_element("xpath","//span[text()='Wearable Technology']").click()
+# driver.find_element("xpath","//span[text()='Smartwatches & Accessories']").click()
+# items = driver.find_elements("xpath","//span[@class='a-size-base-plus a-color-base a-text-normal']|//span[@class='a-price-whole']")
+# items_ = [item.text  for item in items ]
+# products = defaultdict(str)
+# for index,item in enumerate(items_):
+#     if item not in products:
+#         products[item[0]] += item[1]
+# print(products)
+# prices = driver.find_elements("xpath","//span[@class='a-price-whole']")
+# prices_ = [item.text for item in prices ]
+# c = [price.split(",")  for price in prices_  if len(price.split(","))==2]
+# d = [item[0] + item[1] for item in c ]
+# print(d)
+# for ele,price in zip(items_,d):
+#     if int(price) < 2000:
+#        print(ele,price)
+# driver.close()
+
+#Sony Interview Question
+driver.get("https://www.youtube.com/")
+
+driver.find_element("xpath","//a[@href='/watch?v=g6fnFALEseI']").click()
+sleep(2)
+driver.find_element("xpath","//button[@title = 'Full screen (f)']").click()
+sleep(2)
+driver.find_element("xpath","//button[@class='ytp-play-button ytp-button']").send_keys(Keys.SPACE)
+sleep(2)
+title_ = driver.find_element("xpath","//button[@title = 'Exit full screen (f)']")
+actual_value = title_.get_attribute("title")
+expected_value = 'Exit full screen (f)'
+assert actual_value==expected_value  
+sleep(2)
 driver.close()
+
+
+
+# string = " hello ram"
+# print(string.title())
+
+# string =  "gaudwhdojpw"
+# string = string[:5:]+'a'+string[5::]
+# print(string)
