@@ -254,13 +254,13 @@ txt = "apple#banana#cherry#orange"
 # for i in range(2,end):
 #     if i > 1:
 #         for j in range(2,i):
-#             if i % j == 0:
+#             if i % j == 0
 #                 break
 #         else :
 #             print(i)
 
 #Sony Interview Question
-driver = webdriver.Chrome(ChromeDriverManager().install())
+# driver = webdriver.Chrome(ChromeDriverManager().install())
 # driver.get("https://www.amazon.in/")
 # driver.maximize_window()
 # driver.implicitly_wait(5)
@@ -285,22 +285,20 @@ driver = webdriver.Chrome(ChromeDriverManager().install())
 # driver.close()
 
 #Sony Interview Question
-driver.get("https://www.youtube.com/")
-
-driver.find_element("xpath","//a[@href='/watch?v=g6fnFALEseI']").click()
-sleep(2)
-driver.find_element("xpath","//button[@title = 'Full screen (f)']").click()
-sleep(2)
-driver.find_element("xpath","//button[@class='ytp-play-button ytp-button']").send_keys(Keys.SPACE)
-sleep(2)
-title_ = driver.find_element("xpath","//button[@title = 'Exit full screen (f)']")
-actual_value = title_.get_attribute("title")
-expected_value = 'Exit full screen (f)'
-assert actual_value==expected_value  
-sleep(2)
-driver.close()
-
-
+# driver = webdriver.Chrome(ChromeDriverManager().install())
+# driver.get("https://www.youtube.com/")
+# driver.find_element("xpath","//a[@href='/watch?v=g6fnFALEseI']").click()
+# sleep(2)
+# driver.find_element("xpath","//button[@title = 'Full screen (f)']").click()
+# sleep(2)
+# driver.find_element("xpath","//button[@class='ytp-play-button ytp-button']").send_keys(Keys.SPACE)
+# sleep(2)
+# title_ = driver.find_element("xpath","//button[@title = 'Exit full screen (f)']")
+# actual_value = title_.get_attribute("title")
+# expected_value = 'Exit full screen (f)'
+# assert actual_value==expected_value  
+# sleep(2)
+# driver.close()
 
 # string = " hello ram"
 # print(string.title())
@@ -308,3 +306,45 @@ driver.close()
 # string =  "gaudwhdojpw"
 # string = string[:5:]+'a'+string[5::]
 # print(string)
+
+lst =[ 10,0,20,1,-1,30,-4,80,1,0,5,-3]
+lst2 =[ ]
+
+while lst:
+    temp = lst[0]
+    for x in lst:
+        if x < temp:
+            temp = x
+    lst2.append(temp)
+    lst.remove(temp)
+print(lst2)  
+    
+# my_list = [ 10, 0, 20, 1, -1, 30, -4, 80, 1, 0, 5, -3]
+# new_list = []
+
+# while my_list:
+#     min = my_list[0]  
+#     for x in my_list: 
+#         if x < min:
+#             min = x
+#     new_list.append(min)
+#     my_list.remove(min)    
+
+# print(new_list)
+
+# lst2 = sorted(lst)
+# print(lst2)
+
+      
+# driver.get("https://www.flipkart.com/")
+# tags = driver.find_elements("xpath","//a")
+# for i in tags :
+#     print(i.text)
+
+# driver.get("https://www.flipkart.com/")
+# driver.find_element("xpath","//button[text()='✕']").click()
+# tags = driver.find_elements("xpath","//input")
+# count_ = 0
+# for i in tags :
+#     count_ += 1
+# print(count_)
